@@ -1,0 +1,2 @@
+D:\Stoleriu\AplicatiiCurs\CalculParalel\Curs1\x64\Debug\Curs1.exe
+D:\Stoleriu\AplicatiiCurs\CalculParalel\Curs1\x64\Debug\Curs1.pdb
