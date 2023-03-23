@@ -11,6 +11,8 @@ int main()
 {
     pthread_t threadID;
     pthread_create(&threadID, NULL, work, NULL);
-    
+
+    pthread_join(threadID, NULL);
+
     return EXIT_SUCCESS;
 }
