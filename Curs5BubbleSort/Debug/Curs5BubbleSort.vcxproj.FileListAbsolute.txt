@@ -1,2 +1,0 @@
-D:\Stoleriu\AplicatiiCurs\CalculParalel\Curs5BubbleSort\Debug\Curs5BubbleSort.exe
-D:\Stoleriu\AplicatiiCurs\CalculParalel\Curs5BubbleSort\Debug\Curs5BubbleSort.pdb

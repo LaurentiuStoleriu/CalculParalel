@@ -1,5 +1,0 @@
-﻿  C3.cpp
-D:\Stoleriu\AplicatiiCurs\CalculParalel\C3\C3.cpp(24): warning #3947: "_Cilk_for" has been deprecated, and will be removed in a future release.  Please refer to release notes for details and recommended alternatives
-    		cilk_for (int j = 0; j < VERYBIG; j++)  
-    		^
-  
