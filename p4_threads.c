@@ -1,41 +1,17 @@
-#include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NUM_THREADS 4
-
-typedef struct ThreadArgs {
-	int threadID;
-	int *array;
-	int size;
-} ThreadArgs;
 
 int count = 0;
 int* createArray(int size, int numai5);
-//void numara5Serial(int *array, int size);
-void numara5Threaded(void *args);
+void numara5Serial(int *array, int size);
 
-int main() 
-{
-    int size = 100000;
+int main() {
+    int size = 10000;
     int *array = createArray(size, 1);
     count = 0;
-
-    pthread_t threadID[NUM_THREADS];
-    //numara5Serial(array, size);
-
-    for(int id=0; id<NUM_THREADS; id++)
-    {
-        ThreadArgs *myArgs = createArgs(id, array, size);   /////////////////////////////
-        pthread_create(&threadID[id], NULL, numara5Threaded, (void *)myArgs);
-    }
-
-    for(int id=0; id<NUM_THREADS; id++)
-    {
-        pthread_join(&threadID[id], NULL);
-    }
-
+    numara5Serial(array, size);
     printf("Avem %d elemente egale cu 5 in array\n", count);
     free(array);
     return EXIT_SUCCESS;
