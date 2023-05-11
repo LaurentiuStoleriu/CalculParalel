@@ -13,7 +13,7 @@ int array[100];
 
 int main(int argc, char *argv[]) { 
     int first_elem  = 0;
-    int bad_elem    = 1;
+    int bad_elem    = 8;
     int good_elem   = 99;
     double time1, time2, time3;
     pthread_t thread_1, thread_2;
@@ -64,7 +64,7 @@ void *work(void *param) {
     for (int i = 0; i < 100000000; i++) {
         array[index] += 1;
     }
-} 
+}
 
 double computeTime(struct timespec start, struct timespec end) {
     double t;   
