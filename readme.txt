@@ -1,1 +1,0 @@
-Aplicatii discutate la curs
