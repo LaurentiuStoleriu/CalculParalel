@@ -34,37 +34,40 @@ int main()
     }
     elapsedTime = (omp_get_wtime() - startTime) ;
 
-    printf("%.3lf s umplerea sirului cu numere aleatorii\n", elapsedTime);
+    printf("%.5lf s umplerea sirului cu numere aleatorii\n", elapsedTime);
 
     startTime = omp_get_wtime();//clock();
     char stop = 0;
-    // for (long i=0; i<N; i++)
-    // {
-    //     stop = 1;
-    //     for (long j=0; j<(N-1); j++)
-    //     {
-    //         if (sir[j] > sir[j+1])
-    //         {
-    //             swap(&sir[j], &sir[j + 1]);
-    //             stop = 0;
-    //         }
-    //     }
-
-    //     if (stop)
-    //         break;
-    // }
     for (long i=0; i<N; i++)
     {
-        long prim = i % 2;
-#pragma omp parallel for shared(sir,prim)
-        for (long j=prim; j<(N-1); j+=2)
+        stop = 1;
+        for (long j=0; j<(N-1); j++)
         {
             if (sir[j] > sir[j+1])
             {
                 swap(&sir[j], &sir[j + 1]);
+                stop = 0;
             }
         }
+
+        if (stop)
+            break;
     }
+
+//     omp_set_num_threads(8);
+
+//     for (long i=0; i<N; i++)
+//     {
+//         long prim = i % 2;
+// #pragma omp parallel for shared(sir,prim)
+//         for (long j=prim; j<(N-1); j+=2)
+//         {
+//             if (sir[j] > sir[j+1])
+//             {
+//                 swap(&sir[j], &sir[j + 1]);
+//             }
+//         }
+//     }
 
 
 
@@ -73,7 +76,7 @@ int main()
         printf("sir[%ld] = %f\n", i, sir[i]);
     }
     elapsedTime = (omp_get_wtime() - startTime);
-    printf("%.3lf s sortarea sirului\n", elapsedTime);
+    printf("%.5lf s sortarea sirului\n", elapsedTime);
 
     return 0;
 }
