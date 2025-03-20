@@ -13,7 +13,7 @@ void swap(float *x, float *y)
 
 int main()
 {
-    long N = 100000;
+    long N = 10000;
     double startTime, elapsedTime;
 
     float *sir = (float*)malloc(N*sizeof(float));
@@ -37,37 +37,36 @@ int main()
     printf("%.5lf s umplerea sirului cu numere aleatorii\n", elapsedTime);
 
     startTime = omp_get_wtime();//clock();
-    char stop = 0;
+    // char stop = 0;
+    // for (long i=0; i<N; i++)
+    // {
+    //     stop = 1;
+    //     for (long j=0; j<(N-1); j++)
+    //     {
+    //         if (sir[j] > sir[j+1])
+    //         {
+    //             swap(&sir[j], &sir[j + 1]);
+    //             stop = 0;
+    //         }
+    //     }
+
+    //     if (stop)
+    //         break;
+    // }
+
+    omp_set_num_threads(8);
     for (long i=0; i<N; i++)
     {
-        stop = 1;
-        for (long j=0; j<(N-1); j++)
+        long prim = i % 2;
+#pragma omp parallel for shared(sir,prim)
+        for (long j=prim; j<(N-1); j+=2)
         {
             if (sir[j] > sir[j+1])
             {
                 swap(&sir[j], &sir[j + 1]);
-                stop = 0;
             }
         }
-
-        if (stop)
-            break;
     }
-
-//     omp_set_num_threads(8);
-
-//     for (long i=0; i<N; i++)
-//     {
-//         long prim = i % 2;
-// #pragma omp parallel for shared(sir,prim)
-//         for (long j=prim; j<(N-1); j+=2)
-//         {
-//             if (sir[j] > sir[j+1])
-//             {
-//                 swap(&sir[j], &sir[j + 1]);
-//             }
-//         }
-//     }
 
 
 

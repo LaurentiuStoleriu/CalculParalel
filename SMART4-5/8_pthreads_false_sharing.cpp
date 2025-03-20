@@ -59,10 +59,10 @@ int main(int argc, char *argv[]) {
 return EXIT_SUCCESS; 
 }
 
-void *work(void *param) {     
-    int index = *((int*)param);
+void* work(void *param) {     
+    int *index = (int*)param;
     for (int i = 0; i < 100000000; i++) {
-        array[index] += 1;
+        array[*index] += 1;
     }
 }
 
