@@ -1,0 +1,29 @@
+from datetime import datetime
+from threading import Thread
+contor = 0
+def printTime(when, who):
+    now = datetime.now()
+    print(f"{who:>5} -> {when:>30} : {now.minute}:{now.second}.{now.microsecond}")
+
+def work(name):
+    printTime("start", name)
+    global contor
+    for j in range(20_000_000):
+        contor += 1
+    printTime(" end ", name)
+
+if __name__ == "__main__":
+    printTime("(before creating threads)", "main")
+    thrd = []
+    for threadID in range(5):
+        t = Thread(target=work, args=(threadID,))
+        thrd.append(t)
+        thrd[threadID].start()
+
+    printTime("(waiting threads)", "main")
+    
+    for threadID in range(5):
+        thrd[threadID].join()
+        
+    printTime("(all done)", "main")
+    print(f"contor = {contor}")

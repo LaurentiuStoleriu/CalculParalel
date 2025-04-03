@@ -13,7 +13,7 @@ int array[100];
 
 int main(int argc, char *argv[]) { 
     int first_elem  = 0;
-    int bad_elem    = 2;
+    int bad_elem    = 9;
     int good_elem   = 99;
     double time1, time2, time3;
     pthread_t thread_1, thread_2;
